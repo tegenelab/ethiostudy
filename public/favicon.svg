@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#0d9488"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <g transform="translate(12, 14)">
+    <!-- Book -->
+    <path d="M20 4 C14 4 8 6 4 10 L4 42 C8 38 14 36 20 36 C26 36 32 38 36 42 L36 10 C32 6 26 4 20 4Z" fill="white" opacity="0.95"/>
+    <path d="M20 4 L20 36" stroke="#6366f1" stroke-width="1.5" fill="none"/>
+    <!-- Pages -->
+    <path d="M8 14 L16 12 L16 32 L8 34Z" fill="#e0e7ff"/>
+    <path d="M24 12 L32 14 L32 34 L24 32Z" fill="#ccfbf1"/>
+    <!-- Pen -->
+    <line x1="30" y1="6" x2="38" y2="18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="30" cy="6" r="2" fill="white"/>
+  </g>
+</svg>

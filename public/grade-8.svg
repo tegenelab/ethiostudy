@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="180" viewBox="0 0 200 180">
+  <defs>
+    <linearGradient id="bg8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.05"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="180" rx="16" fill="url(#bg8)"/>
+  <text x="100" y="75" text-anchor="middle" font-family="sans-serif" font-size="56" font-weight="800" fill="#8b5cf6">8</text>
+  <text x="100" y="105" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#8b5cf6">GRADE</text>
+  <text x="100" y="135" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#64748b">6 Textbooks</text>
+  <rect x="85" y="148" width="30" height="3" rx="1.5" fill="#8b5cf6" opacity="0.4"/>
+</svg>
