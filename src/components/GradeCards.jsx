@@ -88,7 +88,7 @@ export default function GradeCards() {
               alt={g.label}
               width={200}
               height={180}
-              loading="lazy"
+              loading="eager"
               decoding="async"
               style={{ width: '100%', height: 'auto', display: 'block' }}
             />

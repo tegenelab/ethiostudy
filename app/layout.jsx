@@ -77,7 +77,8 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/og-image.png" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="preload" as="image" href="/hero-main-400.webp" imagesrcset="/hero-main-400.webp 400w, /hero-main-700.webp 700w, /hero-main-900.webp 900w, /hero-main-1200.webp 1200w" imagesizes="(max-width: 768px) 100vw, 1200px" />
         <link rel="alternate" hrefLang="en" href="https://ethiostudy.vercel.app" />
         <link rel="alternate" hrefLang="am" href="https://ethiostudy.vercel.app" />
         <link rel="alternate" hrefLang="x-default" href="https://ethiostudy.vercel.app" />
