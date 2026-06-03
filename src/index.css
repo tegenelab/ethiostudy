@@ -1,7 +1,7 @@
 :root {
   --primary: #0F172A;
   --primary-light: #1e293b;
-  --accent: #0d9488;
+  --accent: #0a7d73;
   --accent-light: #14b8a6;
   --accent-dark: #0f766e;
   --cta: #22C55E;
@@ -27,7 +27,7 @@
 [data-theme="dark"] {
   --primary: #F1F5F9;
   --primary-light: #CBD5E1;
-  --accent: #14b8a6;
+  --accent: #0a7d73;
   --accent-light: #2dd4bf;
   --accent-dark: #0d9488;
   --bg: #0F172A;

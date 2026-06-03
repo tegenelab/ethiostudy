@@ -194,8 +194,8 @@ export default function Hero({ onNavigate }) {
               border: 'none',
               background: 'var(--accent)',
               color: 'white',
-              fontSize: 15,
-              fontWeight: 600,
+              fontSize: 16,
+              fontWeight: 700,
               cursor: 'pointer',
               fontFamily: 'Poppins, sans-serif',
             }}
