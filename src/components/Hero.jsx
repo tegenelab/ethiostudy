@@ -205,7 +205,7 @@ export default function Hero({ onNavigate }) {
 
           <button
             onClick={() => {
-              document.querySelector('#roadmap')?.scrollIntoView({ behavior: 'smooth' });
+              document.getElementById('roadmap')?.scrollIntoView({ behavior: 'smooth' });
             }}
             style={{
               padding: '14px 28px',

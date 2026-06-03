@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import GradeCards from './components/GradeCards';
 import Footer from './components/Footer';
 
+const Roadmap = lazy(() => import('./components/Roadmap'));
 const PopularTextbooks = lazy(() => import('./components/PopularTextbooks'));
 const ExamPrepBanner = lazy(() => import('./components/ExamPrepBanner'));
 const BooksPage = lazy(() => import('./components/BooksPage'));
@@ -26,6 +27,9 @@ function App() {
           <>
             <Hero onNavigate={navigateTo} />
             <GradeCards onNavigate={navigateTo} />
+            <Suspense fallback={null}>
+              <Roadmap />
+            </Suspense>
             <Suspense fallback={null}>
               <PopularTextbooks onNavigate={navigateTo} />
             </Suspense>
