@@ -146,7 +146,7 @@ export default function Hero({ onNavigate }) {
             width={slides[current].width}
             height={slides[current].height}
             alt="Ethiopian students studying"
-            fetchPriority={current === 0 ? 'high' : 'auto'}
+            fetchPriority="high"
             loading="eager"
             decoding="async"
             style={{
