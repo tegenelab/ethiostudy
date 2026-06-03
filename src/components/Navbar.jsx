@@ -13,7 +13,6 @@ export default function Navbar({ page, onNavigate }) {
 
   const links = [
     { label: 'Home', href: '#home', id: 'home' },
-    { label: 'Roadmap', href: '#roadmap', id: 'home' },
     { label: 'Books', href: '#books', id: 'books' },
   ];
 
