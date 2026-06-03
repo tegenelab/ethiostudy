@@ -53,7 +53,6 @@ export const metadata = {
     google: '2-41_tlsagZ8GVI5bpgEUEpN5xHS_TqbjZH3yZxLt14',
   },
   alternates: {
-    canonical: 'https://ethiostudy.vercel.app',
     languages: {
       en: 'https://ethiostudy.vercel.app',
       am: 'https://ethiostudy.vercel.app',
@@ -74,6 +73,8 @@ export default function RootLayout({ children }) {
         <meta name="apple-mobile-web-app-title" content="EthioStudy" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://kehulum.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://kehulum.com" />
         <link rel="icon" type="image/svg+xml" href="/graduation-cap.svg" />
         <link rel="alternate" hrefLang="en" href="https://ethiostudy.vercel.app" />
         <link rel="alternate" hrefLang="am" href="https://ethiostudy.vercel.app" />
@@ -85,29 +86,55 @@ export default function RootLayout({ children }) {
               '@context': 'https://schema.org',
               '@graph': [
                 {
-                  '@type': 'WebSite',
+                  '@type': 'Organization',
+                  '@id': 'https://ethiostudy.vercel.app/#organization',
                   name: 'EthioStudy',
                   url: 'https://ethiostudy.vercel.app',
+                  logo: 'https://ethiostudy.vercel.app/og-image.png',
+                  description: 'Free Ethiopian study materials and textbooks for Grades 8-12.',
+                  foundingDate: '2025',
+                  contactPoint: {
+                    '@type': 'ContactPoint',
+                    contactType: 'customer support',
+                    url: 'https://t.me/tegene',
+                  },
+                  sameAs: ['https://t.me/tegene'],
+                },
+                {
+                  '@type': 'WebSite',
+                  '@id': 'https://ethiostudy.vercel.app/#website',
+                  name: 'EthioStudy',
+                  url: 'https://ethiostudy.vercel.app',
+                  publisher: { '@id': 'https://ethiostudy.vercel.app/#organization' },
                   potentialAction: {
                     '@type': 'SearchAction',
                     target: { '@type': 'EntryPoint', urlTemplate: 'https://ethiostudy.vercel.app/books?q={search_term_string}' },
                     'query-input': 'required name=search_term_string',
                   },
+                  inLanguage: ['en', 'am'],
                 },
                 {
-                  '@type': 'EducationalOrganization',
-                  name: 'EthioStudy',
-                  description: 'Free Ethiopian study materials and textbooks',
+                  '@type': 'WebPage',
+                  '@id': 'https://ethiostudy.vercel.app/#webpage',
+                  name: 'EthioStudy - Free Ethiopian Study Materials & Textbooks',
                   url: 'https://ethiostudy.vercel.app',
+                  description: 'Free textbooks, past exams, and study guides for Ethiopian students Grades 8-12.',
+                  isPartOf: { '@id': 'https://ethiostudy.vercel.app/#website' },
+                  about: { '@id': 'https://ethiostudy.vercel.app/#organization' },
                 },
                 {
                   '@type': 'ItemList',
-                  name: 'Ethiopian Textbooks',
+                  name: 'Ethiopian Textbooks by Grade',
+                  description: 'Free PDF textbooks for Ethiopian secondary school students',
                   itemListElement: [
-                    { '@type': 'ListItem', position: 1, name: 'Grade 8 Textbooks' },
-                    { '@type': 'ListItem', position: 2, name: 'Grade 9 Textbooks' },
-                    { '@type': 'ListItem', position: 3, name: 'Grade 10 Textbooks' },
-                    { '@type': 'ListItem', position: 4, name: 'Grade 11 Textbooks' },
+                    { '@type': 'ListItem', position: 1, name: 'Grade 8 Textbooks', url: 'https://ethiostudy.vercel.app/books/grade8' },
+                    { '@type': 'ListItem', position: 2, name: 'Grade 9 Textbooks', url: 'https://ethiostudy.vercel.app/books/grade9' },
+                    { '@type': 'ListItem', position: 3, name: 'Grade 10 Textbooks', url: 'https://ethiostudy.vercel.app/books/grade10' },
+                    { '@type': 'ListItem', position: 4, name: 'Grade 11 Textbooks', url: 'https://ethiostudy.vercel.app/books/grade11' },
+                    { '@type': 'ListItem', position: 5, name: 'Grade 12 Textbooks', url: 'https://ethiostudy.vercel.app/books/grade12' },
+                    { '@type': 'ListItem', position: 6, name: 'Exam Preparation', url: 'https://ethiostudy.vercel.app/books/exam' },
+                    { '@type': 'ListItem', position: 7, name: 'Natural Stream Textbooks', url: 'https://ethiostudy.vercel.app/books/natural' },
+                    { '@type': 'ListItem', position: 8, name: 'Social Stream Textbooks', url: 'https://ethiostudy.vercel.app/books/social' },
                   ],
                 },
               ],

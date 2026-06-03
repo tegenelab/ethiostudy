@@ -2,8 +2,34 @@ import Link from 'next/link';
 import { FolderClosed } from 'lucide-react';
 import { folders } from '@/lib/data';
 
+export const metadata = {
+  title: 'Free Ethiopian PDF Textbooks - Download by Grade & Stream',
+  description: 'Browse and download free Ethiopian secondary school textbooks in PDF format. Choose from Grade 8 to Grade 12, Natural Stream, Social Stream, and Exam Preparation materials.',
+  keywords: ['Ethiopian textbooks PDF', 'free textbook download Ethiopia', 'Grade 8 to 12 books', 'Ethiopian curriculum', 'MoE textbooks', 'secondary school Ethiopia', 'ነፃ የትምህርት መጽሐፍት'],
+  alternates: {
+    canonical: 'https://ethiostudy.vercel.app/books',
+  },
+  openGraph: {
+    title: 'Free Ethiopian PDF Textbooks - Download by Grade & Stream',
+    description: 'Browse and download free Ethiopian secondary school textbooks in PDF format from Grade 8 through Grade 12.',
+    url: 'https://ethiostudy.vercel.app/books',
+  },
+  twitter: {
+    title: 'Free Ethiopian PDF Textbooks - Download by Grade & Stream',
+    description: 'Browse and download free Ethiopian secondary school textbooks in PDF format from Grade 8 through Grade 12.',
+  },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://ethiostudy.vercel.app' },
+    { '@type': 'ListItem', position: 2, name: 'Books', item: 'https://ethiostudy.vercel.app/books' },
+  ],
+};
+
 function FolderLink({ f }) {
-  const colorVar = f.color;
   return (
     <Link
       href={`/books/${f.id}`}
@@ -59,6 +85,10 @@ export default function BooksPage() {
         minHeight: '100vh',
       }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <style>{`
         .folder-link:hover {
           border-color: var(--folder-color, var(--border)) !important;
@@ -78,7 +108,7 @@ export default function BooksPage() {
         >
           PDF Library
         </span>
-        <h2
+        <h1
           style={{
             fontSize: 'clamp(22px, 3.5vw, 38px)',
             fontWeight: 700,
@@ -87,7 +117,7 @@ export default function BooksPage() {
           }}
         >
           Free <span style={{ color: 'var(--accent)' }}>PDF Books</span> Collection
-        </h2>
+        </h1>
         <p
           style={{
             color: 'var(--text-secondary)',

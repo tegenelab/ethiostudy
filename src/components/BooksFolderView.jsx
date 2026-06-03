@@ -1,9 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Star, Search, BookMarked, ArrowLeft } from 'lucide-react';
+import { folders as allFolders, folderMeta } from '@/lib/data';
+import Link from 'next/link';
 
 export default function BooksFolderView({ folder, books }) {
   const [search, setSearch] = useState('');
@@ -11,6 +13,23 @@ export default function BooksFolderView({ folder, books }) {
   const filtered = books.filter((b) =>
     b.title.toLowerCase().includes(search.toLowerCase())
   );
+
+  const relatedFolders = useMemo(() => {
+    const gradeNumber = parseInt(folder.id.replace('grade', ''));
+    if (folder.id === 'exam') return allFolders.filter((f) => ['grade12', 'grade10'].includes(f.id));
+    if (folder.id === 'natural') return allFolders.filter((f) => ['grade11', 'grade12'].includes(f.id));
+    if (folder.id === 'social') return allFolders.filter((f) => ['grade11', 'grade12'].includes(f.id));
+    if (!isNaN(gradeNumber)) {
+      const adjacent = [];
+      if (gradeNumber > 8) adjacent.push(allFolders.find((f) => f.id === `grade${gradeNumber - 1}`));
+      if (gradeNumber < 12) adjacent.push(allFolders.find((f) => f.id === `grade${gradeNumber + 1}`));
+      if (gradeNumber >= 11) { adjacent.push(allFolders.find((f) => f.id === 'natural'));
+        adjacent.push(allFolders.find((f) => f.id === 'social')); }
+      if (gradeNumber === 12 || gradeNumber === 10) adjacent.push(allFolders.find((f) => f.id === 'exam'));
+      return adjacent.filter(Boolean);
+    }
+    return [];
+  }, [folder.id]);
 
   return (
     <section
@@ -38,7 +57,7 @@ export default function BooksFolderView({ folder, books }) {
         >
           PDF Library
         </span>
-        <h2
+        <h1
           style={{
             fontSize: 'clamp(22px, 3.5vw, 38px)',
             fontWeight: 700,
@@ -48,7 +67,7 @@ export default function BooksFolderView({ folder, books }) {
         >
           {folder.label}{' '}
           <span style={{ color: 'var(--accent)' }}>Textbooks</span>
-        </h2>
+        </h1>
         <p
           style={{
             color: 'var(--text-secondary)',
@@ -59,7 +78,7 @@ export default function BooksFolderView({ folder, books }) {
             fontSize: 14,
           }}
         >
-          Free PDF textbooks for Ethiopian {folder.label.toLowerCase()} students.
+          {folderMeta[folder.id]?.description || `Free PDF textbooks for Ethiopian ${folder.label.toLowerCase()} students.`}
         </p>
       </motion.div>
 
@@ -262,6 +281,79 @@ export default function BooksFolderView({ folder, books }) {
           <Search size={36} style={{ marginBottom: 12, opacity: 0.3 }} />
           <p style={{ fontSize: 13 }}>No books found in this folder.</p>
         </div>
+      )}
+
+      {relatedFolders.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.4 }}
+          style={{ marginTop: 60 }}
+        >
+          <h2
+            style={{
+              fontSize: 16,
+              fontWeight: 700,
+              marginBottom: 16,
+              color: 'var(--primary)',
+              textAlign: 'center',
+            }}
+          >
+            Related Study Materials
+          </h2>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 200px), 1fr))',
+              gap: 10,
+            }}
+          >
+            {relatedFolders.map((f) => (
+              <Link
+                key={f.id}
+                href={`/books/${f.id}`}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 10,
+                  padding: '12px 14px',
+                  borderRadius: 12,
+                  border: '1px solid var(--border)',
+                  background: 'var(--bg-card)',
+                  boxShadow: 'var(--shadow-sm)',
+                  textDecoration: 'none',
+                  transition: 'transform 200ms ease-out, box-shadow 200ms ease-out',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = '';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
+                }}
+              >
+                <div
+                  style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: 10,
+                    background: `${f.color}15`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}
+                >
+                  <BookMarked size={16} color={f.color} />
+                </div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--primary)' }}>
+                  {f.label}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </motion.div>
       )}
     </section>
   );
