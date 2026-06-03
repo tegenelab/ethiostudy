@@ -67,7 +67,7 @@ export default function PopularTextbooks() {
                 alt={`${book.subject} ${book.grade}`}
                 width={170}
                 height={225}
-                loading="lazy"
+                loading="eager"
                 decoding="async"
                 style={{
                   height: '100%',

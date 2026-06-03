@@ -27,9 +27,13 @@ function useCountdown(targetMs) {
 }
 
 export default function ExamPrepBanner() {
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const examDateMs = useMemo(() => new Date('2026-05-15T08:00:00').getTime(), []);
   const { days, hours, minutes, seconds } = useCountdown(examDateMs);
+
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
   const stats = [
     { icon: <Zap size={14} />, value: '95%', label: 'Success Rate' },

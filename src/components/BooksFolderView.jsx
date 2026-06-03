@@ -201,7 +201,7 @@ export default function BooksFolderView({ folder, books }) {
                   <img
                     src={book.cover}
                     alt={book.title}
-                    loading="lazy"
+                    loading="eager"
                     decoding="async"
                     style={{
                       width: '100%',
