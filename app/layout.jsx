@@ -68,14 +68,16 @@ export default function RootLayout({ children }) {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="referrer" content="origin-when-cross-origin" />
         <meta name="theme-color" content="#0d9488" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="EthioStudy" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://kehulum.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://kehulum.com" />
-        <link rel="icon" type="image/svg+xml" href="/graduation-cap.svg" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/og-image.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="alternate" hrefLang="en" href="https://ethiostudy.vercel.app" />
         <link rel="alternate" hrefLang="am" href="https://ethiostudy.vercel.app" />
         <link rel="alternate" hrefLang="x-default" href="https://ethiostudy.vercel.app" />
@@ -148,6 +150,11 @@ export default function RootLayout({ children }) {
           <main>{children}</main>
           <Footer />
         </Providers>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(()=>{})})}`,
+          }}
+        />
       </body>
     </html>
   );
