@@ -72,6 +72,7 @@ export default function GradeCards({ onNavigate }) {
             key={g.id}
             className="grade-card"
             onClick={() => onNavigate('books', g.id)}
+            aria-label={`${g.label} - ${g.books} books, ${g.students} students`}
             style={{
               display: 'flex',
               flexDirection: 'column',

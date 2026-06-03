@@ -125,7 +125,8 @@ export default function ExamPrepBanner({ onNavigate }) {
           </div>
 
           <button
-            onClick={() => onNavigate('books', 'exam-prep')}
+            onClick={() => onNavigate('books', 'exam')}
+            aria-label="Start exam preparation now"
             style={{
               background: 'white',
               color: '#0f766e',

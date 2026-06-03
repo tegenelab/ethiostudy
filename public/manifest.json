@@ -1,0 +1,12 @@
+{
+  "name": "EthioStudy",
+  "short_name": "EthioStudy",
+  "description": "Free Ethiopian textbooks for Grades 8-12",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0d9488",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

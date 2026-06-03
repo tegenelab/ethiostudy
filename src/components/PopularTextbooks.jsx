@@ -66,6 +66,9 @@ export default function PopularTextbooks({ onNavigate }) {
         {textbooks.map((book) => (
           <div
             key={book.subject}
+            role="button"
+            tabIndex={0}
+            aria-label={`${book.subject} ${book.grade} - ${book.downloads} downloads`}
             style={{
               borderRadius: 16,
               background: 'var(--bg-card)',
@@ -75,6 +78,7 @@ export default function PopularTextbooks({ onNavigate }) {
               overflow: 'hidden',
             }}
             onClick={() => onNavigate('books', book.gradeId)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onNavigate('books', book.gradeId); }}
           >
             {/* Book cover */}
             <div

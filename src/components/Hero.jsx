@@ -184,6 +184,7 @@ export default function Hero({ onNavigate }) {
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <button
             onClick={() => onNavigate('books')}
+            aria-label="Browse all textbooks"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -207,6 +208,7 @@ export default function Hero({ onNavigate }) {
             onClick={() => {
               document.getElementById('roadmap')?.scrollIntoView({ behavior: 'smooth' });
             }}
+            aria-label="View the study roadmap"
             style={{
               padding: '14px 28px',
               borderRadius: 12,
