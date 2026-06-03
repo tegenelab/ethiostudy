@@ -1,15 +1,12 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import { BookOpen } from 'lucide-react';
+import { grades } from '@/lib/data';
 
-const grades = [
-  { id: 'grade8', label: 'Grade 8', books: 6, students: '12K+', color: '#8b5cf6', image: '/grade-8.svg' },
-  { id: 'grade9', label: 'Grade 9', books: 10, students: '25K+', color: '#6366f1', image: '/grade-9.svg' },
-  { id: 'grade10', label: 'Grade 10', books: 3, students: '18K+', color: '#06b6d4', image: '/grade-10.svg' },
-  { id: 'natural', label: 'Natural Stream', books: 5, students: '22K+', color: '#10b981', image: '/natural-stream.svg' },
-  { id: 'social', label: 'Social Stream', books: 4, students: '15K+', color: '#ec4899', image: '/social-stream.svg' },
-  { id: 'exam', label: 'Exam Prep', books: 5, students: '30K+', color: '#f97316', image: '/exam-prep-card.svg' },
-];
+export default function GradeCards() {
+  const router = useRouter();
 
-export default function GradeCards({ onNavigate }) {
   return (
     <section
       style={{
@@ -71,7 +68,7 @@ export default function GradeCards({ onNavigate }) {
           <button
             key={g.id}
             className="grade-card"
-            onClick={() => onNavigate('books', g.id)}
+            onClick={() => router.push(`/books/${g.id}`)}
             aria-label={`${g.label} - ${g.books} books, ${g.students} students`}
             style={{
               display: 'flex',

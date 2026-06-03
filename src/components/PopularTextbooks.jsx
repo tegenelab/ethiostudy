@@ -1,41 +1,11 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Download, TrendingUp } from 'lucide-react';
+import { textbooks } from '@/lib/data';
 
-const textbooks = [
-  {
-    subject: 'Mathematics',
-    grade: 'Grade 11',
-    gradeId: 'grade11',
-    downloads: '15,000',
-    color: '#f59e0b',
-    cover: '/popular-maths.webp',
-  },
-  {
-    subject: 'English',
-    grade: 'Grade 11',
-    gradeId: 'grade11',
-    downloads: '12,500',
-    color: '#f59e0b',
-    cover: '/popular-english.webp',
-  },
-  {
-    subject: 'Physics',
-    grade: 'Grade 11',
-    gradeId: 'grade11',
-    downloads: '10,200',
-    color: '#f59e0b',
-    cover: '/popular-physics.webp',
-  },
-  {
-    subject: 'Chemistry',
-    grade: 'Grade 11',
-    gradeId: 'grade11',
-    downloads: '9,800',
-    color: '#f59e0b',
-    cover: '/popular-chemistry.webp',
-  },
-];
-
-export default function PopularTextbooks({ onNavigate }) {
+export default function PopularTextbooks() {
   return (
     <section
       style={{
@@ -64,8 +34,9 @@ export default function PopularTextbooks({ onNavigate }) {
         }}
       >
         {textbooks.map((book) => (
-          <div
+          <Link
             key={book.subject}
+            href={`/books/${book.gradeId}`}
             role="button"
             tabIndex={0}
             aria-label={`${book.subject} ${book.grade} - ${book.downloads} downloads`}
@@ -76,11 +47,10 @@ export default function PopularTextbooks({ onNavigate }) {
               boxShadow: 'var(--shadow-sm)',
               cursor: 'pointer',
               overflow: 'hidden',
+              textDecoration: 'none',
+              display: 'block',
             }}
-            onClick={() => onNavigate('books', book.gradeId)}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onNavigate('books', book.gradeId); }}
           >
-            {/* Book cover */}
             <div
               style={{
                 width: '100%',
@@ -126,7 +96,7 @@ export default function PopularTextbooks({ onNavigate }) {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

@@ -1,4 +1,7 @@
+'use client';
+
 import { useState, useEffect, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 import { Clock, Zap, FileText, Video } from 'lucide-react';
 
 function useCountdown(targetMs) {
@@ -23,7 +26,8 @@ function useCountdown(targetMs) {
   return time;
 }
 
-export default function ExamPrepBanner({ onNavigate }) {
+export default function ExamPrepBanner() {
+  const router = useRouter();
   const examDateMs = useMemo(() => new Date('2026-05-15T08:00:00').getTime(), []);
   const { days, hours, minutes, seconds } = useCountdown(examDateMs);
 
@@ -80,7 +84,6 @@ export default function ExamPrepBanner({ onNavigate }) {
             Grade 12 & Grade 10 — start preparing now.
           </p>
 
-          {/* Countdown */}
           <div style={{ display: 'flex', gap: 8, marginBottom: 20, flexWrap: 'wrap' }}>
             {[
               { val: days, label: 'Days' },
@@ -109,7 +112,6 @@ export default function ExamPrepBanner({ onNavigate }) {
             ))}
           </div>
 
-          {/* Stats */}
           <div style={{ display: 'flex', gap: 16, marginBottom: 20, flexWrap: 'wrap' }}>
             {stats.map((stat) => (
               <div key={stat.label} style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'white' }}>
@@ -125,7 +127,7 @@ export default function ExamPrepBanner({ onNavigate }) {
           </div>
 
           <button
-            onClick={() => onNavigate('books', 'exam')}
+            onClick={() => router.push('/books/exam')}
             aria-label="Start exam preparation now"
             style={{
               background: 'white',

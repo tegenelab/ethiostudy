@@ -1,4 +1,7 @@
+'use client';
+
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 
 const slides = [
@@ -24,11 +27,12 @@ const headlines = [
   { en: 'Your Future Starts Here', am: 'ወደፊትህ እዚህ ይጀምራል' },
 ];
 
-export default function Hero({ onNavigate }) {
+export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [headlineIndex, setHeadlineIndex] = useState(0);
   const [isAmharic, setIsAmharic] = useState(false);
   const [visible, setVisible] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -79,7 +83,6 @@ export default function Hero({ onNavigate }) {
           gap: 24,
         }}
       >
-        {/* TEXT ABOVE */}
         <div style={{ textAlign: 'center' }}>
           <span
             style={{
@@ -130,7 +133,6 @@ export default function Hero({ onNavigate }) {
           </p>
         </div>
 
-        {/* IMAGE IN MIDDLE */}
         <div
           style={{
             width: '100%',
@@ -160,7 +162,6 @@ export default function Hero({ onNavigate }) {
           />
         </div>
 
-        {/* Slide indicators */}
         <div style={{ display: 'flex', gap: 8 }}>
           {slides.map((_, i) => (
             <button
@@ -180,10 +181,9 @@ export default function Hero({ onNavigate }) {
           ))}
         </div>
 
-        {/* BUTTONS BELOW */}
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <button
-            onClick={() => onNavigate('books')}
+            onClick={() => router.push('/books')}
             aria-label="Browse all textbooks"
             style={{
               display: 'flex',

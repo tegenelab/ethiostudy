@@ -1,30 +1,16 @@
-import { useState, useEffect } from 'react';
+'use client';
+
+import { useTheme } from 'next-themes';
 import { Sun, Moon } from 'lucide-react';
 
 export default function ThemeToggle() {
-  const [dark, setDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('theme');
-      if (saved) return saved === 'dark';
-      return true;
-    }
-    return true;
-  });
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (dark) {
-      root.setAttribute('data-theme', 'dark');
-    } else {
-      root.removeAttribute('data-theme');
-    }
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-  }, [dark]);
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <button
-      onClick={() => setDark(!dark)}
-      aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       style={{
         width: 44,
         height: 44,
@@ -40,7 +26,7 @@ export default function ThemeToggle() {
         transition: 'transform 150ms ease-out, background 200ms ease-out, border-color 200ms ease-out, color 200ms ease-out',
       }}
     >
-      {dark ? <Sun size={17} /> : <Moon size={17} />}
+      {isDark ? <Sun size={17} /> : <Moon size={17} />}
     </button>
   );
 }

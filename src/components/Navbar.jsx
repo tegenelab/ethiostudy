@@ -1,9 +1,15 @@
+'use client';
+
 import { useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
 
-export default function Navbar({ page, onNavigate }) {
+export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -11,23 +17,8 @@ export default function Navbar({ page, onNavigate }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const links = [
-    { label: 'Home', href: '#home', id: 'home' },
-    { label: 'Books', href: '#books', id: 'books' },
-  ];
-
-  const handleNav = (link) => {
-    setOpen(false);
-    if (link.id === 'books') {
-      onNavigate('books');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      onNavigate('home');
-      setTimeout(() => {
-        document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
-      }, 50);
-    }
-  };
+  const isBooks = pathname.startsWith('/books');
+  const isHome = pathname === '/';
 
   return (
     <nav
@@ -98,10 +89,9 @@ export default function Navbar({ page, onNavigate }) {
         }
       `}</style>
 
-      <a
-        href="#"
+      <Link
+        href="/"
         aria-label="EthioStudy - Home"
-        onClick={(e) => { e.preventDefault(); onNavigate('home'); window.scrollTo({ top: 0 }); }}
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -139,24 +129,18 @@ export default function Navbar({ page, onNavigate }) {
         >
           Ethio<span style={{ color: 'var(--accent)' }}>Study</span>
         </span>
-      </a>
+      </Link>
 
-      {/* Desktop Links */}
       <div style={{ display: 'flex', gap: 4, alignItems: 'center' }} className="desktop-nav">
-        {links.map((l) => (
-            <button
-              key={l.label}
-              onClick={() => handleNav(l)}
-              aria-label={`Navigate to ${l.label}`}
-              className={`nav-link${page === l.id && ((l.id === 'books' && page === 'books') || (l.id === 'home' && page === 'home')) ? ' active' : ''}`}
-            >
-              {l.label}
-            </button>
-        ))}
+        <Link href="/" className={`nav-link${isHome ? ' active' : ''}`}>
+          Home
+        </Link>
+        <Link href="/books" className={`nav-link${isBooks ? ' active' : ''}`}>
+          Books
+        </Link>
         <ThemeToggle />
       </div>
 
-      {/* Mobile Right Side */}
       <div className="mobile-right" style={{ display: 'none', alignItems: 'center', gap: 8 }}>
         <ThemeToggle />
         <button
@@ -183,7 +167,6 @@ export default function Navbar({ page, onNavigate }) {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {open && (
         <div
           style={{
@@ -202,22 +185,22 @@ export default function Navbar({ page, onNavigate }) {
             gap: 2,
           }}
         >
-          {links.map((l) => (
-            <button
-              key={l.label}
-              onClick={() => handleNav(l)}
-              aria-label={`Navigate to ${l.label}`}
-              className="nav-link"
-              style={{
-                padding: '12px 14px',
-                borderRadius: 12,
-                textAlign: 'left',
-                fontSize: 15,
-              }}
-            >
-              {l.label}
-            </button>
-          ))}
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            className="nav-link"
+            style={{ padding: '12px 14px', borderRadius: 12, textAlign: 'left', fontSize: 15 }}
+          >
+            Home
+          </Link>
+          <Link
+            href="/books"
+            onClick={() => setOpen(false)}
+            className="nav-link"
+            style={{ padding: '12px 14px', borderRadius: 12, textAlign: 'left', fontSize: 15 }}
+          >
+            Books
+          </Link>
         </div>
       )}
 
