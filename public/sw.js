@@ -1,9 +1,17 @@
-const CACHE = 'ethiostudy-v1';
-const IMG_CACHE = 'ethiostudy-imgs';
+const CACHE = 'ethiostudy-v2';
+const IMG_CACHE = 'ethiostudy-imgs-v2';
 
 const PRECACHE = [
   '/',
   '/books',
+  '/books/grade8',
+  '/books/grade9',
+  '/books/grade10',
+  '/books/grade11',
+  '/books/grade12',
+  '/books/exam',
+  '/books/natural',
+  '/books/social',
   '/og-image.png',
   '/exam-prep-card.svg',
   '/exam-prep.webp',
@@ -40,7 +48,18 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(clients.claim());
+  event.waitUntil(
+    Promise.all([
+      clients.claim(),
+      caches.keys().then((keys) =>
+        Promise.all(
+          keys
+            .filter((k) => k !== CACHE && k !== IMG_CACHE)
+            .map((k) => caches.delete(k))
+        )
+      ),
+    ])
+  );
 });
 
 self.addEventListener('fetch', (event) => {
