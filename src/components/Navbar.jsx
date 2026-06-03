@@ -33,9 +33,7 @@ export default function Navbar() {
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '0 16px',
-        background: scrolled
-          ? 'rgba(248,250,252,0.85)'
-          : 'rgba(248,250,252,0.6)',
+        background: scrolled ? 'var(--nav-bg-scrolled)' : 'var(--nav-bg)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         borderRadius: 'var(--radius)',
@@ -44,50 +42,6 @@ export default function Navbar() {
         transition: 'background 200ms ease-out, box-shadow 200ms ease-out',
       }}
     >
-      <style>{`
-        [data-theme="dark"] nav {
-          background: ${scrolled ? 'rgba(15,23,42,0.85)' : 'rgba(15,23,42,0.6)'} !important;
-        }
-        .nav-link {
-          position: relative;
-          padding: 8px 4px;
-          margin: 0 10px;
-          background: none;
-          border: none;
-          color: var(--text-secondary);
-          font-weight: 500;
-          font-size: 13;
-          cursor: pointer;
-          font-family: 'Open Sans', sans-serif;
-          transition: color 200ms ease-out;
-        }
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          bottom: 2px;
-          left: 50%;
-          width: 18px;
-          height: 2px;
-          background: var(--accent);
-          border-radius: 2px;
-          transform: translateX(-50%) scaleX(0);
-          transition: transform 200ms ease-out, opacity 200ms ease-out;
-          opacity: 0;
-        }
-        .nav-link:hover::after {
-          transform: translateX(-50%) scaleX(1);
-          opacity: 1;
-        }
-        .nav-link.active::after {
-          transform: translateX(-50%) scaleX(1);
-          opacity: 1;
-        }
-        .nav-link:hover { color: var(--accent); }
-        .nav-link.active { color: var(--accent); }
-        @media (max-width: 640px) {
-          nav { top: 8px !important; left: 8px !important; right: 8px !important; height: 56px !important; padding: 0 12px !important; }
-        }
-      `}</style>
 
       <Link
         href="/"
@@ -204,12 +158,6 @@ export default function Navbar() {
         </div>
       )}
 
-      <style>{`
-        @media (max-width: 768px) {
-          .desktop-nav { display: none !important; }
-          .mobile-right { display: flex !important; }
-        }
-      `}</style>
     </nav>
   );
 }
