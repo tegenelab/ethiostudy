@@ -58,6 +58,42 @@ export default function Navbar({ page, onNavigate }) {
         [data-theme="dark"] nav {
           background: ${scrolled ? 'rgba(15,23,42,0.85)' : 'rgba(15,23,42,0.6)'} !important;
         }
+        .nav-link {
+          position: relative;
+          padding: 8px 4px;
+          margin: 0 10px;
+          background: none;
+          border: none;
+          color: var(--text-secondary);
+          font-weight: 500;
+          font-size: 13;
+          cursor: pointer;
+          font-family: 'Open Sans', sans-serif;
+          transition: color 200ms ease-out;
+        }
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: 2px;
+          left: 50%;
+          width: 18px;
+          height: 2px;
+          background: var(--accent);
+          border-radius: 2px;
+          transform: translateX(-50%) scaleX(0);
+          transition: transform 200ms ease-out, opacity 200ms ease-out;
+          opacity: 0;
+        }
+        .nav-link:hover::after {
+          transform: translateX(-50%) scaleX(1);
+          opacity: 1;
+        }
+        .nav-link.active::after {
+          transform: translateX(-50%) scaleX(1);
+          opacity: 1;
+        }
+        .nav-link:hover { color: var(--accent); }
+        .nav-link.active { color: var(--accent); }
         @media (max-width: 640px) {
           nav { top: 8px !important; left: 8px !important; right: 8px !important; height: 56px !important; padding: 0 12px !important; }
         }
@@ -109,26 +145,14 @@ export default function Navbar({ page, onNavigate }) {
       {/* Desktop Links */}
       <div style={{ display: 'flex', gap: 4, alignItems: 'center' }} className="desktop-nav">
         {links.map((l) => (
-          <button
-            key={l.label}
-            onClick={() => handleNav(l)}
-            aria-label={`Navigate to ${l.label}`}
-            style={{
-              padding: '8px 14px',
-              borderRadius: 10,
-              border: 'none',
-              background: page === l.id && ((l.id === 'books' && page === 'books') || (l.id === 'home' && page === 'home'))
-                ? 'rgba(13,148,136,0.1)' : 'transparent',
-              color: 'var(--text-secondary)',
-              fontWeight: 500,
-              fontSize: 13,
-              cursor: 'pointer',
-              transition: 'color 200ms ease-out, background 200ms ease-out',
-              fontFamily: 'Open Sans, sans-serif',
-            }}
-          >
-            {l.label}
-          </button>
+            <button
+              key={l.label}
+              onClick={() => handleNav(l)}
+              aria-label={`Navigate to ${l.label}`}
+              className={`nav-link${page === l.id && ((l.id === 'books' && page === 'books') || (l.id === 'home' && page === 'home')) ? ' active' : ''}`}
+            >
+              {l.label}
+            </button>
         ))}
         <ThemeToggle />
       </div>
@@ -184,17 +208,12 @@ export default function Navbar({ page, onNavigate }) {
               key={l.label}
               onClick={() => handleNav(l)}
               aria-label={`Navigate to ${l.label}`}
+              className="nav-link"
               style={{
                 padding: '12px 14px',
                 borderRadius: 12,
-                border: 'none',
-                background: 'transparent',
-                color: 'var(--text-secondary)',
-                fontWeight: 500,
-                fontSize: 15,
-                cursor: 'pointer',
                 textAlign: 'left',
-                fontFamily: 'Open Sans, sans-serif',
+                fontSize: 15,
               }}
             >
               {l.label}
