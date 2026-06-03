@@ -4,7 +4,7 @@ import { folders } from '@/lib/data';
 
 export const metadata = {
   title: 'Free Ethiopian PDF Textbooks - Download by Grade & Stream',
-  description: 'Browse and download free Ethiopian secondary school textbooks in PDF format. Choose from Grade 8 to Grade 12, Natural Stream, Social Stream, and Exam Preparation materials.',
+  description: 'Browse and download free Ethiopian secondary school textbooks in PDF. Grade 8 to 12, Natural Stream, Social Stream, and Exam Prep.',
   keywords: ['Ethiopian textbooks PDF', 'free textbook download Ethiopia', 'Grade 8 to 12 books', 'Ethiopian curriculum', 'MoE textbooks', 'secondary school Ethiopia', 'ነፃ የትምህርት መጽሐፍት'],
   alternates: {
     canonical: 'https://ethiostudy.vercel.app/books',
@@ -89,13 +89,6 @@ export default function BooksPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <style>{`
-        .folder-link:hover {
-          border-color: var(--folder-color, var(--border)) !important;
-          box-shadow: var(--shadow-md) !important;
-          transform: translateY(-2px);
-        }
-      `}</style>
       <div style={{ textAlign: 'center', marginBottom: 40 }}>
         <span
           style={{

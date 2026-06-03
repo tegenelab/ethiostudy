@@ -241,6 +241,12 @@ button {
   nav { top: 8px !important; left: 8px !important; right: 8px !important; height: 56px !important; padding: 0 12px !important; }
 }
 
+.folder-link:hover {
+  border-color: var(--folder-color, var(--border)) !important;
+  box-shadow: var(--shadow-md) !important;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
   .desktop-nav { display: none !important; }
   .mobile-right { display: flex !important; }

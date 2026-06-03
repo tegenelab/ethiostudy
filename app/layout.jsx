@@ -64,7 +64,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${poppins.variable} ${openSans.variable}`} suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="referrer" content="origin-when-cross-origin" />
         <meta name="theme-color" content="#0d9488" />
@@ -75,11 +74,12 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://kehulum.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://kehulum.com" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/og-image.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="mobile-web-app-capable" content="yes" />
         <link rel="alternate" hrefLang="en" href="https://ethiostudy.vercel.app" />
-        <link rel="alternate" hrefLang="am" href="https://ethiostudy.vercel.app" />
         <link rel="alternate" hrefLang="x-default" href="https://ethiostudy.vercel.app" />
         <script
           type="application/ld+json"
@@ -110,7 +110,7 @@ export default function RootLayout({ children }) {
                   publisher: { '@id': 'https://ethiostudy.vercel.app/#organization' },
                   potentialAction: {
                     '@type': 'SearchAction',
-                    target: { '@type': 'EntryPoint', urlTemplate: 'https://ethiostudy.vercel.app/books?q={search_term_string}' },
+                    target: { '@type': 'EntryPoint', urlTemplate: 'https://ethiostudy.vercel.app/books/{search_term_string}' },
                     'query-input': 'required name=search_term_string',
                   },
                   inLanguage: ['en', 'am'],

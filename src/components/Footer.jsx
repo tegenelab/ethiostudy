@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, Globe, Send, GraduationCap } from 'lucide-react';
+import { MessageCircle, Send, GraduationCap } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -48,14 +48,14 @@ export default function Footer() {
         {/* Social icons */}
         <div style={{ display: 'flex', gap: 12 }}>
           {[
-            { icon: <Mail size={18} />, label: 'Email' },
-            { icon: <MessageCircle size={18} />, label: 'WhatsApp' },
+            { icon: <MessageCircle size={18} />, label: 'WhatsApp', href: 'https://wa.me/251911000000' },
             { icon: <Send size={18} />, label: 'Telegram', href: 'https://t.me/tegene' },
-            { icon: <Globe size={18} />, label: 'Website' },
           ].map((social) => (
             <a
               key={social.label}
-              href={social.href || '#'}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={social.label}
               style={{
                 width: 40,
