@@ -4,15 +4,15 @@ import { ArrowRight } from 'lucide-react';
 const slides = [
   {
     image: '/hero-main-400.webp',
-    srcSet: '/hero-main-400.webp 400w, /hero-main-600.webp 600w, /hero-main-900.webp 900w, /hero-main.webp 1200w',
-    sizes: '(max-width: 600px) 400px, (max-width: 900px) 600px, 900px',
+    srcSet: '/hero-main-400.webp 400w, /hero-main-600.webp 600w, /hero-main-700.webp 700w, /hero-main-900.webp 900w, /hero-main.webp 1200w',
+    sizes: '(max-width: 480px) 90vw, (max-width: 768px) 85vw, 800px',
     width: 1200,
     height: 670,
   },
   {
     image: '/hero-students-2-400.webp',
-    srcSet: '/hero-students-2-400.webp 400w, /hero-students-2-600.webp 600w, /hero-students-2-900.webp 900w, /hero-students-2.webp 1200w',
-    sizes: '(max-width: 600px) 400px, (max-width: 900px) 600px, 900px',
+    srcSet: '/hero-students-2-400.webp 400w, /hero-students-2-600.webp 600w, /hero-students-2-700.webp 700w, /hero-students-2-900.webp 900w, /hero-students-2.webp 1200w',
+    sizes: '(max-width: 480px) 90vw, (max-width: 768px) 85vw, 800px',
     width: 1200,
     height: 670,
   },
@@ -147,7 +147,7 @@ export default function Hero({ onNavigate }) {
             height={slides[current].height}
             alt="Ethiopian students studying"
             fetchPriority={current === 0 ? 'high' : 'auto'}
-            loading={current === 0 ? 'eager' : 'lazy'}
+            loading="eager"
             decoding="async"
             style={{
               width: '100%',
