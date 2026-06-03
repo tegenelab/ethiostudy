@@ -28,10 +28,10 @@ function App() {
             <Hero onNavigate={navigateTo} />
             <GradeCards onNavigate={navigateTo} />
             <Suspense fallback={null}>
-              <Roadmap />
+              <PopularTextbooks onNavigate={navigateTo} />
             </Suspense>
             <Suspense fallback={null}>
-              <PopularTextbooks onNavigate={navigateTo} />
+              <Roadmap />
             </Suspense>
             <Suspense fallback={null}>
               <ExamPrepBanner onNavigate={navigateTo} />
