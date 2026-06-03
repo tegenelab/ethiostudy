@@ -5,7 +5,7 @@ import Roadmap from '@/src/components/Roadmap';
 import ExamPrepBanner from '@/src/components/ExamPrepBanner';
 
 export const metadata = {
-  title: 'EthioStudy - Free Ethiopian Study Materials & Textbooks for Grades 8-12',
+  title: 'EthioStudy - Free Ethiopian Study Materials & Textbooks',
   description: 'Download free Ethiopian textbooks, past exams, and study guides for Grades 8-12. PDF books for Natural and Social streams.',
   alternates: {
     canonical: 'https://ethiostudy.vercel.app',
