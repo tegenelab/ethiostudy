@@ -4,7 +4,7 @@ const textbooks = [
   {
     subject: 'Mathematics',
     grade: 'Grade 11',
-    gradeId: 'grade-11',
+    gradeId: 'grade11',
     downloads: '15,000',
     color: '#f59e0b',
     cover: 'https://kehulum.com/up_asset/b/323/kehulum17001201399d965dcf62.png',
@@ -12,7 +12,7 @@ const textbooks = [
   {
     subject: 'English',
     grade: 'Grade 11',
-    gradeId: 'grade-11',
+    gradeId: 'grade11',
     downloads: '12,500',
     color: '#f59e0b',
     cover: 'https://kehulum.com/up_asset/b/319/kehulum17001180039aa8027c68.png',
@@ -20,7 +20,7 @@ const textbooks = [
   {
     subject: 'Physics',
     grade: 'Grade 11',
-    gradeId: 'grade-11',
+    gradeId: 'grade11',
     downloads: '10,200',
     color: '#f59e0b',
     cover: 'https://kehulum.com/up_asset/b/324/kehulum170012144699c87dbe79.png',
@@ -28,7 +28,7 @@ const textbooks = [
   {
     subject: 'Chemistry',
     grade: 'Grade 11',
-    gradeId: 'grade-11',
+    gradeId: 'grade11',
     downloads: '9,800',
     color: '#f59e0b',
     cover: 'https://kehulum.com/up_asset/b/317/kehulum170011674174ee1b2b18.png',

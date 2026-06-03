@@ -1,12 +1,12 @@
 import { BookOpen } from 'lucide-react';
 
 const grades = [
-  { id: 'grade-8', label: 'Grade 8', books: 6, students: '12K+', color: '#8b5cf6', image: '/grade-8.svg' },
-  { id: 'grade-9', label: 'Grade 9', books: 10, students: '25K+', color: '#6366f1', image: '/grade-9.svg' },
-  { id: 'grade-10', label: 'Grade 10', books: 3, students: '18K+', color: '#06b6d4', image: '/grade-10.svg' },
-  { id: 'grade-11', label: 'Grade 11', books: 11, students: '22K+', color: '#f59e0b', image: '/grade-11.svg' },
-  { id: 'grade-12', label: 'Grade 12', books: 4, students: '15K+', color: '#ef4444', image: '/grade-12.svg' },
-  { id: 'exam-prep', label: 'Exam Prep', books: 5, students: '30K+', color: '#f97316', image: '/exam-prep-card.svg' },
+  { id: 'grade8', label: 'Grade 8', books: 6, students: '12K+', color: '#8b5cf6', image: '/grade-8.svg' },
+  { id: 'grade9', label: 'Grade 9', books: 10, students: '25K+', color: '#6366f1', image: '/grade-9.svg' },
+  { id: 'grade10', label: 'Grade 10', books: 3, students: '18K+', color: '#06b6d4', image: '/grade-10.svg' },
+  { id: 'natural', label: 'Natural Stream', books: 5, students: '22K+', color: '#10b981', image: '/natural-stream.svg' },
+  { id: 'social', label: 'Social Stream', books: 4, students: '15K+', color: '#ec4899', image: '/social-stream.svg' },
+  { id: 'exam', label: 'Exam Prep', books: 5, students: '30K+', color: '#f97316', image: '/exam-prep-card.svg' },
 ];
 
 export default function GradeCards({ onNavigate }) {
