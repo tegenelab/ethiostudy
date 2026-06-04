@@ -1,4 +1,5 @@
 import { Poppins, Open_Sans } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import Providers from './providers';
 import Navbar from '@/src/components/Navbar';
@@ -153,6 +154,7 @@ export default function RootLayout({ children }) {
           <main>{children}</main>
           <Footer />
         </Providers>
+        <Analytics />
         <script
           dangerouslySetInnerHTML={{
             __html: `if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(()=>{})})}`,
